@@ -1,0 +1,13 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "c:\\Users\\hp user\\Downloads\\commons-compress-1.24.0.jar"
+        ],
+        "exclude": [
+            "lib/commons-compress-1.24.0.jar"
+        ]
+    }
+}
