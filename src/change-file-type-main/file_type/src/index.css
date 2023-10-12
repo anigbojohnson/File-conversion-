@@ -1,0 +1,146 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+.contain{
+  padding-top: 200px;
+  max-width: 600px;
+  margin: auto;
+  z-index: 1;
+}
+
+
+ input{
+  width:450px;
+  height: 40px;
+  padding-left:15px;
+  margin-top:10px;
+  border:1px solid black;
+}
+form label{
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+input[type="submit"]{
+  color:white;
+  background-color: black;
+  font-size:15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+span{
+  
+  font-size: 12px;
+  color:red;
+}
+input:invalid[focus="true"]{
+  border: 1px solid red;
+}
+input:invalid[focus="true"] ~ span{
+  display:block;
+}
+
+button p{
+  margin: auto;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+form {
+  display:flex;
+  flex-direction: column;
+}
+.emailCode{
+  display:flex;
+  flex-direction: row;
+}
+
+.modal{
+  width:100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  position:fixed;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalContent{
+  width:480px;
+  height:660px;
+  border-radius:8px;
+  background-color: white;
+  box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.modalHeader {
+  display:flex;
+  flex-direction: row;
+  position: relative;
+}
+.close{
+  position: absolute;
+  left:95%;
+  border:none;
+  cursor:pointer;
+  background-color: transparent;
+  font-size: 25px;
+  
+}
+
+#displayErr{
+  display:block;
+}
+
+
+.btnSection{
+  display:flex;
+  flex-direction: column;
+}
+.closeBtn{
+  background-color: red;
+  width: 475px;
+  height:40px;
+  border:none;
+  color:white;
+  font-weight: bold;
+  font-size: 12px;
+  cursor:pointer;
+  margin-top: 30px;
+}
+
+.modal-footer{
+  margin-top: 20px;
+}
