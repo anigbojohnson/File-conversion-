@@ -1,7 +1,7 @@
 import sys, shutil 
 import os,json,time
 from pathlib import Path
-
+print("i am python script")
 try:
     extractedDirectries = sys.argv[1][1:-1].split(',')
     uploadDirectories = sys.argv[2][1:-1].split(',')

@@ -18,7 +18,12 @@ public class CPIO {
     public static void main(String[] args) { 
         System.out.println("your path: for this file");
         try {
-          String dirPath = "change-file-type-main\\change_file_type\\controller\\pythonProject\\CPIOToZip.py"; 
+
+          File pythonPath = new File( "controller"+File.separator+"pythonProject"+File.separator+"CPIOToZip.py"); 
+
+          String dirPath = pythonPath.getAbsolutePath();
+          System.out.println(dirPath);
+          
        
           ArrayList<String> cpioFileList = new ArrayList<>();
           ArrayList<String> extractedCpioFileList = new ArrayList<>();
@@ -31,7 +36,7 @@ public class CPIO {
                  BufferedInputStream bis = new BufferedInputStream(new FileInputStream((new File("uploads"+File.separator+CpioArchiveFile.path)).getAbsolutePath()));
                  ArchiveInputStream ais = new CpioArchiveInputStream(bis);
                ) {
-                extractDir = new File(("change-file-type-main"+File.separator+"change_file_type"+File.separator+"intermediary" +File.separator+CpioArchiveFile.originalName.split("\\.")[0]+'_'+CpioArchiveFile.path));
+                extractDir = new File(("change-file-type-main"+File.separator+"change_file_type"+File.separator+"intermediary" +File.separator+CpioArchiveFile.originalName.split("\\.")[0]+'_'+CpioArchiveFile.path.split("\\.")[0]));
                 String extractAbs= extractDir.getAbsolutePath();
                 extractDir = new File(extractAbs);
                 extractedCpioFileList.add(extractAbs);
@@ -55,23 +60,38 @@ public class CPIO {
                 }
             }
         }
-       
+        ProcessBuilder processBuilder = new ProcessBuilder("python", dirPath);
+   /* 
+      Process process = processBuilder.start();
+        OutputStream outputStream = process.getOutputStream();
+        PrintWriter printWriter = new PrintWriter(outputStream);
+        printWriter.println(extractedCpioFileList.toString());
+        printWriter.println(cpioFileList.toString());
+        printWriter.flush();
+        printWriter.close();
+   */  
+     
+
+
+
+
           CommandLine cmdLine = new CommandLine("python"); 
           cmdLine.addArgument(dirPath); 
             DefaultExecutor executor = new DefaultExecutor(); 
             cmdLine.addArgument(extractedCpioFileList.toString()); // Add the first value as an argument  
             cmdLine.addArgument(cpioFileList.toString()); 
-            // Create a PumpStreamHandler to capture both stdout and stderr
+          
+          int exitValue = executor.execute(cmdLine); 
 
         // Set the stream handler for the executor
-      /* 
-
-         int exitValue = executor.execute(cmdLine); 
+      
+/* 
             if(exitValue!=0){
                   System.out.println("This is the exit value "+exitValue);
             }
-      */   
+*/
 
+      
       
             System.out.println("CPIO archive extracted successfully.");
         } catch (ExecuteException e) {
