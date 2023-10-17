@@ -1,15 +1,14 @@
 import sys, shutil 
-import os,json,time
+import os,json
 from pathlib import Path
-print("i am python script")
-try:
-    extractedDirectries = sys.argv[1][1:-1].split(',')
-    uploadDirectories = sys.argv[2][1:-1].split(',')
 
-    for extractedDirectry,uploadDirectory in zip( extractedDirectries,uploadDirectories):
-        shutil.make_archive(os.path.join(os.getcwd(), "change-file-type-main","change_file_type",'output',r''+os.path.basename( os.path.abspath(extractedDirectry))),'zip', os.path.abspath(r''+extractedDirectry))
-        shutil.rmtree( os.path.abspath(extractedDirectry))
-        os.remove( uploadDirectory)
+directries = json.loads(sys.argv[1])
+
+try:
+    for dir in directries:
+        shutil.make_archive(os.path.join(os.getcwd(),'output',r''+dir['originalname'].split('.')[0]+'_'+str(dir['filename'].split('.')[0])),'zip', os.path.join(os.getcwd(),'intermediary',dir['originalname'].split('.')[0]+'_'+str(dir['filename'].split('.')[0])))
+        os.remove( os.path.abspath(os.path.join(os.getcwd(),dir['path'].split(os.path.sep)[0],dir['filename'])))
+        shutil.rmtree( os.path.abspath(os.path.join(os.getcwd(),'intermediary',r''+dir['originalname'].split('.')[0]+'_'+str(dir['filename'].split('.')[0]))))
     print(200)
-except: 
+except:
     print(400)

@@ -18,7 +18,7 @@ const  BZTarZToZIP =async(req, res)=>{
     console.log(path.extname(file.originalname))
     console.log(file)
 
-    if(file.mimetype === "application/x-bzip2" || path.extname(file.originalname)==".bz2"){
+    if(file.mimetype === "application/x-tar" || path.extname(file.originalname)==".tar.bz2"){
         cb(null , true);
     }else{
         cb(null , false);

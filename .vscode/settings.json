@@ -6,7 +6,8 @@
             "lib/**/*.jar",
             "c:\\Users\\hp user\\Downloads\\commons-compress-1.24.0.jar",
             "c:\\Users\\hp user\\Downloads\\json-20230227-javadoc.jar",
-            "c:\\Users\\hp user\\Downloads\\org.json-chargebee-1.0.jar"
+            "c:\\Users\\hp user\\Downloads\\org.json-chargebee-1.0.jar",
+            "c:\\Users\\hp user\\Downloads\\sevenzipjbinding-16.02-2.01.jar"
         ],
         "exclude": [
             "lib/commons-compress-1.24.0.jar"

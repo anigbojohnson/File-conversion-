@@ -1,6 +1,8 @@
 const path = require('path')
 const multer = require('multer')
 const { exec } = require('child_process');
+const {PythonShell} = require('python-shell')
+
 
 const CPIOConverter  =async(req, res)=>{ 
 
@@ -61,6 +63,27 @@ const CPIOConverter  =async(req, res)=>{
                 return;
             }
             console.log("This is out ",runStdout)
+           let  pythonCabinateConvert = new PythonShell(path.join("pythonProject","CPIOToZip.py"),{
+                mode: "text",
+                pythonPath:'python',
+                scriptPath:__dirname,
+                args:[JSON.stringify(req.files)]
+             })
+
+             pythonCabinateConvert.on('message',(message)=>{
+                console.log(message)
+            }
+        )
+        pythonCabinateConvert.on('error',(message)=>{
+                console.log("error"+message.toString())
+             })
+        pythonCabinateConvert .end((err)=>{
+                if(err){
+                    console.log(err)
+                    return
+                }
+             }) 
+
         })
     });
         
